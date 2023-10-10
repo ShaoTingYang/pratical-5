@@ -6,40 +6,31 @@
 #include "RecursiveBinarySearch.h"
 
 int main() {
-    // Create an unsorted list of integers
-    std::vector<int> unsortedList = {1, 3, 5, 4, -5, 100, 7777, 2014};
-    
-    // Create an instance of BubbleSort and use it to sort the list
-    BubbleSort bubbleSort;
-    std::vector<int> sortedList = bubbleSort.sort(unsortedList);
-    
-    // Output the sorted list
-    std::cout << "Sorted list: ";
-    for (int num : sortedList) {
-        std::cout << num << " ";
+    std::vector<int> input;
+    int num;
+    while (std::cin >> num) {
+        input.push_back(num);
     }
-    
-    // Create an instance of QuickSort and use it to sort the list
+
     QuickSort quickSort;
-    sortedList = quickSort.sort(unsortedList);
-    
-    // Output the sorted list
-    std::cout << "\nSorted list (QuickSort): ";
-    for (int num : sortedList) {
-        std::cout << num << " ";
-    }
-    
-    // Perform a binary search on the sorted list
-    RecursiveBinarySearch binarySearch;
+    input = quickSort.sort(input);
+
     int target = 1;
-    bool found = binarySearch.search(sortedList, target);
-    
-    // Output the search result
+
+    RecursiveBinarySearch binarySearch;
+    bool found = binarySearch.search(input, target);
+
     if (found) {
-        std::cout << "\n" << target << " exists in the list." << std::endl;
+        std::cout << "true";
     } else {
-        std::cout << "\n" << target << " does not exist in the list." << std::endl;
+        std::cout << "false";
     }
-    
+
+    for (int num : input) {
+        std::cout << " " << num;
+    }
+
+    std::cout << std::endl;
+
     return 0;
 }
